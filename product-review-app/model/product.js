@@ -21,7 +21,7 @@ class Product {
     static findById(id){
         const db = getDB();
         return db.collection('products')
-            .findOne({ _id: new ObjectId(prodId) });
+            .findOne({ _id: new ObjectId(id) });
     }
     
     static deleteById(prodId) {

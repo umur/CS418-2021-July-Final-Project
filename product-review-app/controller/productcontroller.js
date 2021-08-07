@@ -46,5 +46,9 @@ exports.editProduct = (req, res, next) => {
 };
 
 exports.getOneProduct =(req, res, next) =>{
-    Product.findById
+    Product.findById(req.params.id)
+    .then((result)=>{
+        res.json(result)
+    })
+    .catch((err)=>console.log(err));
 }
