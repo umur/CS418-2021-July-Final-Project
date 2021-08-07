@@ -28,6 +28,18 @@ class Product {
         return db.collection('products')
             .remove({ _id: new ObjectId(prodId) });
     }
+
+    updateProduct() {
+        const db = getDB();
+        return db.collection('products')
+            .updateOne({ _id: new ObjectId(this._id) }, {
+                $set: {
+                    title:this.title,
+                    price:this.price
+                }
+            });
+    }
+    
 }
 
 module.exports = Product;
