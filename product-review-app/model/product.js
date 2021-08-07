@@ -13,6 +13,11 @@ class Product {
             .find()
             .toArray();
     }
+    save() {
+        const db = getDB();
+        return db.collection('products')
+            .insertOne(this);
+    }
 }
 
 module.exports = Product;

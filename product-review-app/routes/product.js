@@ -3,7 +3,7 @@ var router = express.Router();
 const usercontroller = require('../controller/productcontroller');
 
 router.get('/', usercontroller.getAllProducts);
-// router.post('/', usercontroller.postUser);
+router.post('/', usercontroller.createProduct);
 // router.delete('/:id', usercontroller.deleteById);
 // router.put('/:id', usercontroller.editUser);
 
