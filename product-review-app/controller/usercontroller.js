@@ -12,7 +12,8 @@ exports.getAllUsers = (req, res)=>{
 
 
 exports.deleteById = (req, res, next)=>{
-    console.log(req.body.id)
+    User.deleteUser(req.params.id);
+    console.log(req.params.id)
     .then(result => {       
         res.json({status:"success"})
     })

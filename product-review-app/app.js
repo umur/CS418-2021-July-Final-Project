@@ -26,7 +26,9 @@ app.use('/', user);
 
 // error handler
 app.use(function(err, req, res, next) {
+  console.log(err);
 res.json({status:"error"})
+
 });
 
 mongoConnect(()=>{
