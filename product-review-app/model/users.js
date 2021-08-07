@@ -11,7 +11,7 @@ class User {
   static deleteUser(id) {
     const db = getDB();
     return db.collection('user')
-        .remove({ _id: new ObjectId(id) });
+        .deleteOne({ _id: new ObjectId(id) });
 }
 
   static findAll() {
@@ -28,10 +28,6 @@ class User {
     })
     .catch(err => console.log(err));
   }
-
-
-
-
 }
 
 module.exports = User;
