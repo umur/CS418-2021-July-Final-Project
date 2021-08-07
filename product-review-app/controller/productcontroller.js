@@ -20,4 +20,12 @@ exports.createProduct = (req, res, next) => {
             res.json({status:'created'});
         }).catch(err => console.log(err));
 
-};
+}
+
+exports.deleteProduct = (req, res, next)=>{
+    Product.deleteById(req.params.id)
+    .then(result => { 
+        res.json({status:"success"})
+    })
+    .catch(err => console.log(err));
+}
