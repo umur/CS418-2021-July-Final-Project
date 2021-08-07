@@ -1,3 +1,4 @@
+const { getDatabase } = require("../mongodb/connect");
 exports.getAllProducts = (req, res) => {};
 exports.getProduct = (req, res) => {};
 exports.createProduct = (req, res) => {};
