@@ -10,6 +10,9 @@ exports.getAllUsers = (req, res)=>{
     })
 }
 
+exports.delete =(req,res)=>{
+
+}
 
 exports.postUser = (req, res)=>{
     const username = req.body.username;
