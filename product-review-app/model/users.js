@@ -2,7 +2,8 @@ const getDB = require("../db/database").getDB;
 const ObjectId = require('mongodb').ObjectId;
 
 class User {
-  constructor(username,password) {
+  constructor(id,username,password) {
+    this._id = id;
     this.username = username;
     this.password = password;
   }
@@ -28,6 +29,26 @@ class User {
     })
     .catch(err => console.log(err));
   }
+
+
+  updateUser() {
+    const db = getDB();
+    return db.collection('user')
+        .updateOne({ _id: new ObjectId(this._id) }, {
+            $set: {
+              username:this.username,
+              password:this.password
+            }
+        });
+}
+
+
+static findById(id) {
+  const db = getDB();
+  return db.collection('user')
+      .findOne({ _id: new ObjectId(id) });
+}
+
 }
 
 module.exports = User;

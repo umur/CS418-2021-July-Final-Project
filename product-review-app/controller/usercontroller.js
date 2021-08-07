@@ -19,6 +19,18 @@ exports.deleteById = (req, res, next)=>{
     .catch(err => console.log(err));
 }
 
+
+exports.editUser = (req, res, next) => {
+    const updatedUser = new User(req.body._id, req.body.username, req.body.password);
+    console.log(updatedUser);
+
+    updatedUser.updateUser()  
+        .then(result => {
+            res.json({status:"success"})
+        })
+        .catch(err => console.log(err));
+}
+
 exports.postUser = (req, res)=>{
     const username = req.body.username;
     const password = req.body.password;
