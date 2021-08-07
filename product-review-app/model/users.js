@@ -1,3 +1,4 @@
+
 const getDB = require("../db/database").getDB;
 const ObjectId = require('mongodb').ObjectId;
 
@@ -52,3 +53,4 @@ static findById(id) {
 }
 
 module.exports = User;
+
