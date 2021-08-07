@@ -42,7 +42,7 @@ class User {
             }
         });
 }
-
+  
 
 static findById(id) {
   const db = getDB();

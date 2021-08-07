@@ -23,6 +23,7 @@ class Product {
         return db.collection('products')
             .findOne({ _id: new ObjectId(prodId) });
     }
+    
     static deleteById(prodId) {
         const db = getDB();
         return db.collection('products')
