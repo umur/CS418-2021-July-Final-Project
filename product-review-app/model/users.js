@@ -1,4 +1,5 @@
 const getDB = require("../db/database").getDB;
+const ObjectId = require('mongodb').ObjectId;
 
 class User {
   constructor(username,password) {
@@ -6,17 +7,16 @@ class User {
     this.password = password;
   }
 
+
+  static deleteUser(id) {
+    const db = getDB();
+    return db.collection('user')
+        .remove({ _id: new ObjectId(id) });
+}
+
   static findAll() {
     const db = getDB();
     return db.collection("user").find().toArray();
-  }
-
-  checkUserName() {
-    if (users.length === 0) {
-      return -1;
-    } else {
-      return users.findIndex((item) => item.username === this.username);
-    }
   }
 
   save() {
@@ -30,8 +30,8 @@ class User {
   }
 
 
+
+
 }
-
-
 
 module.exports = User;

@@ -10,8 +10,14 @@ exports.getAllUsers = (req, res)=>{
     })
 }
 
-exports.delete =(req,res)=>{
 
+exports.deleteById = (req, res, next)=>{
+    User.deleteUser(req.params.id);
+    console.log(req.params.id)
+    .then(result => {       
+        res.json({status:"success"})
+    })
+    .catch(err => console.log(err));
 }
 
 exports.postUser = (req, res)=>{
