@@ -3,8 +3,8 @@ var path = require('path');
 let mongoConnect = require("./db/database").mongoConnect;
 
 
-const user = require('./routes/user');
-// var testRouter = require('./test');
+const userRoute = require('./routes/user');
+var productRouter = require('./routes/product');
 
 
 var app = express();
@@ -20,8 +20,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // app.use('/', indexRouter);
-app.use('/', user);
-// app.use('/test', testRouter);
+app.use('/', userRoute);
+app.use('/product', productRouter);
 
 
 // error handler
