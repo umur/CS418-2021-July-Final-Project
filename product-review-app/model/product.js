@@ -18,6 +18,11 @@ class Product {
         return db.collection('products')
             .insertOne(this);
     }
+    static findById(id){
+        const db = getDB();
+        return db.collection('products')
+            .findOne({ _id: new ObjectId(prodId) });
+    }
 }
 
 module.exports = Product;
