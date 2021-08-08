@@ -4,8 +4,12 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-var indexRouter = require("./routes/index");
+// var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+let productRouter = require("./routes/product");
+let authRouter = require("./routes/auth");
+let reviewRouter = require("./routes/reviews");
+let mongoConnect = require("./utils/database").mongoConnect;
 
 var app = express();
 
@@ -19,8 +23,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
+app.use("/", authRouter);
 app.use("/users", usersRouter);
+app.use("/products", productRouter);
+app.use("/products/reviews", reviewRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -39,6 +45,8 @@ app.use(function (err, req, res, next) {
 });
 
 // module.exports = app;
-app.listen(3000, () => {
-  console.log("Server Started on port 3000");
+mongoConnect(() => {
+  app.listen(3000, () => {
+    console.log("Server Started on port 3000");
+  });
 });
