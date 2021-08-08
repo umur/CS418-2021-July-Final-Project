@@ -2,22 +2,17 @@ const express = require("express");
 const router = express.Router();
 const authConroller = require("../controller/authController");
 
-router.get("/", (req, res, next) => {
-
-  res.json("ready to get");
-});
 router.get("/:name", (req, res, next) => {
-  res.json("ready to get with name");
+  res.json("fetching review for product a");
 });
 router.post("/", (req, res, next) => {
-  res.json("ready to post");
+  res.json("posting review for product a");
 });
 router.put("/:name", authConroller.authorizeAdmin, (req, res, next) => {
-  res.json("ready to update");
+  res.json("updating review for product a");
 });
 router.delete("/:name", authConroller.authorizeAdmin, (req, res, next) => {
-  res.json("ready to delete");
+  res.json("deleting review for product a");
 });
 
 module.exports = router;
-
