@@ -5,7 +5,7 @@ const productSchema = new mongoose.Schema(
                     required:[true,'please add a name'],
                 unique:true,
                 },
-      productNumber:Number,
+      productNumber:{type:Number,unique:true},
       productreview:{type:String,required:[true,`please select 'bad','good' or 'excellent'`]} ,
       userid:{ type: Number , required:true },
       username:{type:String,required:[true,'please add user name']}    
