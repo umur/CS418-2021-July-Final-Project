@@ -11,8 +11,9 @@ exports.getAllProducts = (req, res, next) => {
 exports.createProduct = (req, res, next) => {
   const title = req.body.title;
   const price = req.body.price;
+  const review = req.body.review;
 
-  const prod = new Product(null, title, price);
+  const prod = new Product(null, title, price,review);
   prod
     .save()
     .then((result) => {
