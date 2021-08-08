@@ -3,7 +3,8 @@ const jwt = require("jsonwebtoken");
 const secret = "AB product";
 
 exports.login = (req, res, next) => {
-  const user = new User(null,req.body.username,null,null,req.body.password,null).login
+  const user = new User(null,req.body.username,null,null,req.body.password,null).login()
+  console.log(user);
   if (user) {
     //generate token, send back
     const jwtToken = jwt.sign(
@@ -20,11 +21,12 @@ exports.authorize = (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (authHeader) {
     const jwtToken = authHeader.split(" ")[1];
-    console.log(jwtToken);
+    // console.log(jwtToken);
     try {
       const payload = jwt.verify(jwtToken, secret);
       console.log(payload);
       req.user = payload;
+
       next();
     } catch (error) {
       res.status(403).json({ error: "Forbiden" });

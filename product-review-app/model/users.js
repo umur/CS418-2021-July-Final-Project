@@ -29,7 +29,7 @@ class User {
     db.collection('user')
     .insertOne(this)
     .then(result => {
-    console.log(result);
+    // console.log(result);
     })
     .catch(err => console.log(err));
   }
@@ -57,12 +57,22 @@ static findById(id) {
 }
 
 
-login(){
-  const db = getDB();
-  return db.collection('user')
-      .findOne({username:{$eq:this.username, password:{$eq:this.password}}});
+
+async login(){
+  const db =  getDB();
+    await db.collection("user").find().toArray()
+    .then(user=>{
+      // console.log(user);
+      // userArray.push(user);     
+      return user.find(u=>u.username == this.username && u.password == this.password)
+    })
+    .catch(err => console.log(err));
+    // console.log(userArray)
 }
+
 }
+
+// let userArray = [];
 
 module.exports = User;
 

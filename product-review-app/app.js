@@ -1,13 +1,14 @@
-var express = require('express');
-var path = require('path');
-let mongoConnect = require("./db/database").mongoConnect;
+const express = require('express');
+const path = require('path');
+const mongoConnect = require("./db/database").mongoConnect;
 
 
+const loginRoute = require('./routes/authoRoute')
 const userRoute = require('./routes/user');
-var productRouter = require('./routes/product');
+const productRouter = require('./routes/product');
 
 
-var app = express();
+const app = express();
 
 
 // view engine setup
@@ -19,9 +20,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-// app.use('/', indexRouter);
+app.use(loginRoute);  
 app.use('/', userRoute);
 app.use('/product', productRouter);
+
 
 
 // error handler
