@@ -12,7 +12,7 @@ router.get("/", (req, res, next) => {
     res.json({data});
   });
 
-  //res.json("ready to get");
+  
 });
 router.get("/:name", (req, res, next) => {
   //res.json("ready to get with name");
