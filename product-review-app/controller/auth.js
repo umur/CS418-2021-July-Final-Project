@@ -1,14 +1,16 @@
 const User = require("../model/users");
 const jwt = require("jsonwebtoken");
-const secret = "AB product";
+const secret = "AB_product";
 
-exports.login = (req, res, next) => {
-  const user = new User(null,req.body.username,null,null,req.body.password,null).login()
+exports.login = async (req, res, next) => {
+  const user = await new User(null,req.body.username,null,null,req.body.password,null).login();
   console.log(user);
+  // user.login()
+
   if (user) {
     //generate token, send back
     const jwtToken = jwt.sign(
-      {username: user.username, role: user.role },
+      { id: user._id, username: user.username, role: user.role },
       secret
     );
     res.json({ jwtToken });
@@ -38,9 +40,9 @@ exports.authorize = (req, res, next) => {
 
 // to get the user and we can give to a specific user an authorization
 // exports.authorizeAdmin = (req, res, next) => {
-//   if (req.user.role === "admin") {
-//     next();
-//   } else {
-//     res.status(401).json({ error: "Unauthorized!" });
-//   }
+// if (req.user.role === "admin") {
+// next();
+// } else {
+// res.status(401).json({ error: "Unauthorized!" });
+// }
 // };

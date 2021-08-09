@@ -19,10 +19,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-app.use(loginRoute);  
 app.use('/', userRoute);
-app.use('/product', productRouter);
+app.use(loginRoute);  
+app.use('/', productRouter);
 
 
 
