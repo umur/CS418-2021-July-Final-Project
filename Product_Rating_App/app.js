@@ -6,14 +6,15 @@ var logger = require("morgan");
 
 // var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-let productRouter2 = require("./routes/products");
+//let productRouter2 = require("./routes/products");
 let authRouter = require("./routes/auth");
 let reviewRouter = require("./routes/reviews");
+const productRouter = require('./routes/product')
 let mongoConnect = require("./utils/database").mongoConnect;
+//const db = require("./config/database")
 
 var app = express();
-const productRouter = require('./routes/product')
-const db = require("./config/database")
+
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -30,8 +31,8 @@ app.use("/users", usersRouter);
 app.use("/products", productRouter);
 app.use("/products/reviews", reviewRouter);
 
-db()
-app.use('/products',productRouter2)
+//db()
+//app.use('/products',productRouter2)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
