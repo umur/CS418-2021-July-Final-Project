@@ -11,5 +11,6 @@ router
   .get(productsController.getProduct)
   .put(productsController.updateProduct)
   .delete(productsController.deleteProduct);
+router.route("/:id/review").put(productsController.updateReview);
 
 module.exports = router;
