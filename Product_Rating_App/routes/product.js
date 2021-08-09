@@ -11,11 +11,10 @@ router.get("/", (req, res, next) => {
     }
     res.json({ data });
   });
-
-  
 });
 router.get("/:name", (req, res, next) => {
   //res.json("ready to get with name");
+
   let product1 = getDB()
     .collection("product")
     .find({ productName: req.params.name })

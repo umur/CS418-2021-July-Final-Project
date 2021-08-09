@@ -9,12 +9,11 @@ var usersRouter = require("./routes/users");
 //let productRouter2 = require("./routes/products");
 let authRouter = require("./routes/auth");
 let reviewRouter = require("./routes/reviews");
-const productRouter = require('./routes/product')
+const productRouter = require("./routes/product");
 let mongoConnect = require("./utils/database").mongoConnect;
 //const db = require("./config/database")
 
 var app = express();
-
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -29,7 +28,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", authRouter);
 app.use("/users", usersRouter);
 app.use("/products", productRouter);
-app.use("/products/reviews", reviewRouter);
+app.use("/reviews", reviewRouter);
 
 //db()
 //app.use('/products',productRouter2)

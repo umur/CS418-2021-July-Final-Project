@@ -9,8 +9,8 @@ user {
 
 reveiw {
     _id:number,
-    user:[_id:number,firstName:string,lastName:string]
-    product:[{name:string,reputatation:number,rating:string,createdAt:date}]
+    user:{_id:number,firstName:string,lastName:string}
+    product:{name:string,rating:string,createdAt:date}
     
 }
 

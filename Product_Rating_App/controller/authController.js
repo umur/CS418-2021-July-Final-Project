@@ -37,7 +37,7 @@ exports.authorize = async (req, res, next) => {
       if (err) {
         return res.status(403).json({ error: "forbidden" });
       }
-      console.log("authorized", user);
+      // console.log("authorized", user);
       req.user = user;
 
       next();
