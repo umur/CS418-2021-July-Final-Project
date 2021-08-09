@@ -7,6 +7,7 @@ const connectoinString = 'mongodb+srv://root:123@cluster0.wpzy5.mongodb.net/fina
 const authorizeRouter = require('./routes/auth.js');
 const indexRouter = require('./routes/index');
 const jwtManager = require('./model/jwtManager');
+const users = require('./routes/users');
 
 const app = express();
 
@@ -31,7 +32,10 @@ app.use((req, res, next) => {
         const jwt = new jwtManager();
         const data = jwt.verify(header.split(' ')[1]);
         if (!data) {
-          return res.json({ status: 'auth_err' });
+          return res.json({ status: 'auth_err', message:"Please login first" });
+        }
+        if (req.url == '/users' && data.role != "superuser") {
+          return res.json({ status: 'unauthorize user' });
         }
         next();
       }
@@ -41,6 +45,7 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/authorize', authorizeRouter);
+app.use('/users',users);
 
 // error handler
 app.use(function (err, req, res, next) {
