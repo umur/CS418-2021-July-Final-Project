@@ -31,30 +31,81 @@ router.post("/", (req, res, next) => {
         },
         createdAt: Date.now(),
       };
-      //   console.log(reviewToInsert);
 
-      let updateUserReviews = {
-        productName: dataProduct.name,
-        rating: req.body.rating,
-      };
-      console.log(updateUserReviews);
-
-      getDB()
-        .collection("users")
-        .updateOne(
-          { username: req.user.username },
-          { $addToSet: { review: updateUserReviews } },
-          { upsert: true }
-        );
-
+      //   if review for product already exists give message
       getDB()
         .collection("review")
-        .insertOne(reviewToInsert)
-        .then((data) => {
-          if (!data) {
-            res.json("no data");
+        .findOne({
+          $and: [
+            { "user.firstname": dataUser.firstname },
+            { "product.name": dataProduct.name },
+          ],
+        })
+        .then((found) => {
+          if (found) {
+            res.json("rating by this user already exists");
           } else {
-            res.json(data);
+            getDB()
+              .collection("review")
+              .insertOne(reviewToInsert)
+              .then((data) => {
+                if (!data) {
+                  res.json("no data");
+                } else {
+                  getDB()
+                    .collection("users")
+                    .updateOne(
+                      { username: req.user.username },
+                      {
+                        $addToSet: {
+                          review: {
+                            productName: dataProduct.name,
+                            rating: req.body.rating,
+                            review_id: data.insertedId,
+                          },
+                        },
+                      },
+                      { upsert: true }
+                    );
+
+                  getDB()
+                    .collection("product")
+                    .updateOne(
+                      { name: req.body.product_name },
+                      {
+                        $addToSet: {
+                          review: {
+                            review_id: data.insertedId,
+                            firstname: dataUser.firstname,
+                            lastname: dataUser.lastname,
+                            rating: req.body.rating,
+                          },
+                        },
+                      }
+                    );
+                  let addToReputaion;
+                  if ((req.body.rating = "excellent")) {
+                    addToReputation = 2;
+                  } else if ((req.body.rating = "bad")) {
+                    addToReputation = -1;
+                  } else {
+                    addToReputation = 0;
+                  }
+
+                  getDB()
+                    .collection("product")
+                    .updateOne(
+                      { name: req.body.product_name },
+                      {
+                        $set: {
+                          reputation: dataProduct.reputation + addToReputation,
+                        },
+                      }
+                    );
+
+                  res.json(data);
+                }
+              });
           }
         });
     });
