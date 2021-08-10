@@ -48,7 +48,7 @@ exports.authorize = async (req, res, next) => {
 };
 
 exports.authorizeAdmin = (req, res, next) => {
-  console.log(req.user);
+  // console.log(req.user);
   if (req.user.role === "admin") {
     next();
   } else {

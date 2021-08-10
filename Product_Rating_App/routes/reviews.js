@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const authConroller = require("../controller/authController");
 const getDB = require("../utils/database").getDB;
+const ObjectId = require("../utils/database").ObjectId;
 
 function getProductByName(name) {
   return getDB()
@@ -13,6 +14,11 @@ function getUserByUserName(username) {
     .collection("users")
     .findOne({ username: `${username}` });
 }
+function getReviewByID(id) {
+  return getDB()
+    .collection("review")
+    .findOne({ _id: new ObjectId(`${id}`) });
+}
 
 router.get("/:name", (req, res, next) => {
   //   console.log(req.params.name, req.user.username);
@@ -20,6 +26,7 @@ router.get("/:name", (req, res, next) => {
     res.json(data.review);
   });
 });
+
 router.post("/", (req, res, next) => {
   getUserByUserName(req.user.username).then((dataUser) => {
     getProductByName(req.body.product_name).then((dataProduct) => {
@@ -112,11 +119,79 @@ router.post("/", (req, res, next) => {
   });
 });
 
-router.put("/:name", authConroller.authorizeAdmin, (req, res, next) => {
-  res.json("updating review for product a");
+router.put("/:id", authConroller.authorizeAdmin, (req, res, next) => {
+  getReviewByID(req.params.id).then((found) => {
+    console.log(found);
+    if (found) {
+      getDB()
+        .collection("review")
+        .updateOne(
+          { _id: found._id },
+          {
+            $set: {
+              product: { name: req.body.product_name, rating: req.body.rating },
+            },
+          }
+        )
+        .then((updated) => {
+          getDB()
+            .collection("product")
+            .updateOne(
+              {
+                name: req.body.product_name,
+                "review.review_id": new ObjectId(req.params.id),
+              },
+              { $set: { "review.$.rating": req.body.rating } }
+            );
+
+          getDB()
+            .collection("users")
+            .updateOne(
+              {
+                username: req.user.username,
+                "review.review_id": new ObjectId(req.params.id),
+              },
+              { $set: { "review.$.rating": req.body.rating } }
+            );
+
+          res.json(updated);
+        });
+    } else {
+      res.json("no such item in the review list");
+    }
+  });
+
+  //   res.json("updating review for product a");
 });
-router.delete("/:name", authConroller.authorizeAdmin, (req, res, next) => {
-  res.json("deleting review for product a");
+
+router.delete("/:id", authConroller.authorizeAdmin, (req, res, next) => {
+  let objID = new ObjectId(req.params.id);
+  //   getDB()
+  //     .collection("review")
+  //     .findOne({ _id: ObjID })
+  //     .then((view) => {
+  //       console.log(view);
+  //     });
+  getDB()
+    .collection("review")
+    .remove({ _id: objID })
+    .then((removed) => {
+      getDB()
+        .collection("product")
+        .updateOne(
+          { "review.review_id": objID },
+          { $pull: { review: { review_id: objID } } }
+        );
+
+      getDB()
+        .collection("users")
+        .updateOne(
+          { "review.review_id": objID },
+          { $pull: { review: { review_id: objID } } }
+        );
+
+      res.json(removed);
+    });
 });
 
 module.exports = router;
