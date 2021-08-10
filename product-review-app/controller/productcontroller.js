@@ -16,14 +16,20 @@ exports.createProduct = (req, res, next) => {
   const username = req.user.username;
   const userId = req.user.id;
   const rating = req.body.rating;
-  const rev = [];
+  const rev = {
+      user:{
+          id:userId,
+          username:username
+      },
+      review:review,
+      rating:rating
+  };
 
-  rev.push({
-    user: { id: userId, username: username },
-    review: review,
-    rating: rating,
-  });
-  const prod = new Product(null, title, price, rev);
+  const reviewArray = [rev];
+
+console.log(req.body.review)
+  const prod = new Product(null, title, price,reviewArray);
+
   prod
     .save()
     .then((result) => {
@@ -42,9 +48,11 @@ exports.deleteProduct = (req, res, next) => {
 
 exports.editProduct = (req, res, next) => {
   const updatedProduct = new Product(
-    req.body._id,
+    req.params.id,
     req.body.title,
-    req.body.price
+    req.body.price,
+    req.body.review,
+    req.body.rating
   );
   console.log(updatedProduct);
 
@@ -71,15 +79,14 @@ exports.addreview = (req, res, next) => {
     rating: rating,
   };
 
-  const updatedProduct = new Product(
+  const reviewProduct = new Product(
     req.body._id,
     req.body.title,
     req.body.price,
     revObject
   );
-  console.log(updatedProduct);
 
-  updatedProduct
+  reviewProduct
     .addNewReview()
     .then((result) => {
       res.json({ status: "success" });

@@ -2,11 +2,11 @@ const getDB = require("../db/database").getDB;
 const ObjectId = require("mongodb").ObjectId;
 
 class Product {
-  constructor(id, title, price, reviews = []) {
+  constructor(id, title, price, review = []) {
     this._id = id;
     this.title = title;
     this.price = price;
-    this.reviews = reviews;
+    this.review = review;
   }
   static findAll() {
     const db = getDB();
@@ -34,6 +34,8 @@ class Product {
         $set: {
           title: this.title,
           price: this.price,
+          review: this.review,
+          rating: this.rating
         },
       }
     );

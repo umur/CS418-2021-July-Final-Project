@@ -4,7 +4,6 @@ const secret = "AB_product";
 
 exports.login = async (req, res, next) => {
   const user = await new User(null,req.body.username,null,null,req.body.password,null).login();
-  console.log(user);
   // user.login()
 
   if (user) {
@@ -26,7 +25,6 @@ exports.authorize = (req, res, next) => {
     // console.log(jwtToken);
     try {
       const payload = jwt.verify(jwtToken, secret);
-      console.log(payload);
       req.user = payload;
 
       next();
@@ -39,7 +37,7 @@ exports.authorize = (req, res, next) => {
 };
 
 exports.authorizeAdmin = (req,res,next)=> {
-console.log(req.user.role);
+// console.log(req.user.role);
 if( req.user.role == "admin") {
   next();
   } else {
