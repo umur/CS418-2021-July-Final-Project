@@ -16,12 +16,15 @@ exports.getProduct = (req, res, next) => {
     .then((product) => res.json(product))
     .catch((err) => next(err));
 };
+let id = 1;
 exports.createProduct = (req, res, next) => {
   const newProduct = {
     productName: req.body.productName,
     price: req.body.price,
-    productId: 7,
+    productId: id,
   };
+  id++;
+
   const db = getDatabase();
   db.collection("products")
     .insertOne(newProduct)
@@ -39,6 +42,7 @@ exports.updateProduct = (req, res, next) => {
     })
     .catch((err) => next(err));
 };
+
 exports.updateReview = (req, res, next) => {
   const product = { productId: Number(req.params.id) };
   const review = req.body.review;
@@ -54,20 +58,22 @@ exports.updateReview = (req, res, next) => {
   const db = getDatabase();
   db.collection("products")
     .updateMany(product, {
-      $addToSet: {
+      $push: {
         reputationinfo: { userName: userName, reputationPts: increment },
       },
       $inc: { totalReputationPts: increment },
     })
+
     .then(() => {
       res.json({ status: "Product Updated" });
     })
     .catch((err) => next(err));
 };
 exports.deleteProduct = (req, res, next) => {
+  const product = { productId: req.params.id };
   const db = getDatabase();
   db.collection("products")
-    .deleteOne()
+    .deleteOne(product)
     .then(() => {
       res.json({ status: "Product Deleted" });
     })

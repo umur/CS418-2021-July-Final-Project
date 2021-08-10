@@ -11,7 +11,6 @@ exports.getAllUsers = (req, res, next) => {
 
 exports.getUser = (req, res, next) => {
   const user = { userId: Number(req.params.id) };
-  console.log(user);
   const db = getDatabase();
   db.collection("users")
     .find(user)
@@ -19,16 +18,16 @@ exports.getUser = (req, res, next) => {
     .then((result) => res.json(result))
     .catch((err) => next(err));
 };
-
+let id = 1;
 exports.createUser = (req, res, next) => {
-  console.log(req.body);
   const newUser = {
     name: req.body.name,
     userName: req.body.name,
     password: req.body.password,
     status: "active",
-    userId: 5,
+    userId: id,
   };
+  id++;
   const db = getDatabase();
   db.collection("users")
     .insertOne(newUser)
