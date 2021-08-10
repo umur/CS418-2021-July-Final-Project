@@ -38,9 +38,19 @@ exports.authorize = (req, res, next) => {
   }
 };
 
+exports.authorizeAdmin = (req,res,next)=> {
+console.log(req.user.role);
+if( req.user.role == "admin") {
+  next();
+  } else {
+  res.status(401).json({ error: "Unauthorized!" });
+  }
+}
+
 // to get the user and we can give to a specific user an authorization
-// exports.authorizeAdmin = (req, res, next) => {
-// if (req.user.role === "admin") {
+// exports.authorizeAdmin =  (req, res, next) => {
+//    console.log(req.user);
+// if( req.user.role == "admin") {
 // next();
 // } else {
 // res.status(401).json({ error: "Unauthorized!" });
