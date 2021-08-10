@@ -69,10 +69,12 @@ exports.addreview = (req, res, next) => {
   let rating = req.body.rating;
   let review = req.body.review;
   const username = req.user.username;
+  const userId = req.user.id;
+  // let id = req.user.id;
 
   let revObject = {
     user: {
-      id: id,
+      id: userId,
       username: username,
     },
     review: review,
@@ -85,7 +87,7 @@ exports.addreview = (req, res, next) => {
     req.body.price,
     revObject
   );
-
+console.log(req.user.id)
   reviewProduct
     .addNewReview()
     .then((result) => {

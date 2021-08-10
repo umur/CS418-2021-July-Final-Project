@@ -34,8 +34,8 @@ class Product {
         $set: {
           title: this.title,
           price: this.price,
-          review: this.review,
-          rating: this.rating
+          // review: this.review,
+          // rating: this.rating
         },
       }
     );
@@ -47,7 +47,7 @@ class Product {
       { _id: new ObjectId(this._id) },
       {
         $push: {
-          reviews: this.reviews,
+          review: this.review,
         },
       }
     );
