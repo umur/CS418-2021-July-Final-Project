@@ -19,6 +19,15 @@ function getReviewByID(id) {
     .collection("review")
     .findOne({ _id: new ObjectId(`${id}`) });
 }
+router.get("/", (req, res, next) => {
+  getDB()
+    .collection("review")
+    .find()
+    .toArray()
+    .then((reviews) => {
+      res.json(reviews);
+    });
+});
 
 router.get("/:name", (req, res, next) => {
   //   console.log(req.params.name, req.user.username);
