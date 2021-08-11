@@ -10,6 +10,7 @@ var usersRouter = require("./routes/users");
 let authRouter = require("./routes/auth");
 let reviewRouter = require("./routes/reviews");
 const productRouter = require("./routes/product");
+const logRouter = require("./routes/log");
 let mongoConnect = require("./utils/database").mongoConnect;
 //const db = require("./config/database")
 
@@ -26,6 +27,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", authRouter);
+
+app.use("/", logRouter);
+
 app.use("/users", usersRouter);
 app.use("/products", productRouter);
 app.use("/reviews", reviewRouter);

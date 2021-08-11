@@ -5,26 +5,30 @@ let authConroller = require("../controller/authController");
 
 /* GET users listing. */
 
-router.get("/", function (req, res, next) {
+router.get("/", authConroller.authorizeAdmin, function (req, res, next) {
   let user1 = getDB().collection("users").find().toArray();
   user1.then((data) => {
     res.json(data);
   });
 });
 
-router.get("/:username", function (req, res, next) {
-  let user1 = getDB()
-    .collection("users")
-    .findOne({ username: req.params.username });
-  user1.then((data) => {
-    if (!data) {
-      res.json("no data");
-    }
-    res.json(data);
-  });
-});
+router.get(
+  "/:username",
+  authConroller.authorizeAdmin,
+  function (req, res, next) {
+    let user1 = getDB()
+      .collection("users")
+      .findOne({ username: req.params.username });
+    user1.then((data) => {
+      if (!data) {
+        res.json("no data");
+      }
+      res.json(data);
+    });
+  }
+);
 
-router.post("/", function (req, res, next) {
+router.post("/", authConroller.authorizeAdmin, function (req, res, next) {
   let userToInsert = {
     username: req.body.username,
     password: req.body.password,

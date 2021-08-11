@@ -15,7 +15,7 @@ exports.login = async (req, res, next) => {
       .then((data) => {
         if (data) {
           const token = jwt.sign(
-            { username: user.username, role: user.role },
+            { username: data.username, role: data.role },
             secret
           );
           res.json({ token });

@@ -26,9 +26,9 @@ product {
 
 log {
     _id:number,
-    user:[_id:number,userName:string]
-    url:string
-    method:string
+    user: [username,role]
+    url:string,
+    method:string,
     createdAt:date()
 }
 
