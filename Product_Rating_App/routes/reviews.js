@@ -9,6 +9,7 @@ function getProductByName(name) {
     .collection("product")
     .findOne({ name: `${name}` });
 }
+
 function getUserByUserName(username) {
   return getDB()
     .collection("users")
