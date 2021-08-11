@@ -65,7 +65,7 @@ exports.addReview=(req,res,next)=>{
         date: new Date(),
         rating:req.body.rating
     }];
-    //need to work on how to count the reputation point and add to the products 
+ 
     let sum;
     for(let i=0;i<reviews.length;i++){
         if(reviews[i].rating=='good'){
