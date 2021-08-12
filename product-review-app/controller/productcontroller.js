@@ -16,19 +16,21 @@ exports.createProduct = (req, res, next) => {
   const username = req.user.username;
   const userId = req.user.id;
   const rating = req.body.rating;
+  
   const rev = {
       user:{
           id:userId,
           username:username
       },
       review:review,
-      rating:rating
+      rating:rating,
+
   };
 
   const reviewArray = [rev];
 
 console.log(req.body.review)
-  const prod = new Product(null, title, price,reviewArray);
+  const prod = new Product(null, title, price,0,reviewArray);
 
   prod
     .save()
@@ -64,6 +66,7 @@ exports.editProduct = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
+let point = 0;
 exports.addreview = (req, res, next) => {
   let id = req.body._id;
   let rating = req.body.rating;
@@ -71,6 +74,14 @@ exports.addreview = (req, res, next) => {
   const username = req.user.username;
   const userId = req.user.id;
   // let id = req.user.id;
+
+if(rating=="excellent"){
+point = 2
+}else if(rating == "bad"){
+  point = -1;
+}else{
+  point = 0;
+}
 
   let revObject = {
     user: {
@@ -85,6 +96,7 @@ exports.addreview = (req, res, next) => {
     req.body._id,
     req.body.title,
     req.body.price,
+    point,
     revObject
   );
 console.log(req.user.id)
