@@ -9,7 +9,7 @@ router.post('/sign-up',userController.signUp);
 router.post('/sign-in', userController.signIn);
 
 //list all users account-only authorizedSuperUser
-router.get('/listUsers,',userController.listAllUserAccounts);
+router.get('/listUsers,',userController.authorizedSuperUser,userController.listAllUserAccounts);
 
 //activates user
 
