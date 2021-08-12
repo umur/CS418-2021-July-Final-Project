@@ -1,3 +1,4 @@
+const logger = require("../logger");
 const { getDatabase } = require("../mongodb/connect");
 exports.getAllProducts = (req, res, next) => {
   const db = getDatabase();
