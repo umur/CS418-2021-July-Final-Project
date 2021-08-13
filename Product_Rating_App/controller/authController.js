@@ -14,11 +14,17 @@ exports.login = async (req, res, next) => {
       .findOne({ username: user.username, password: user.password })
       .then((data) => {
         if (data) {
-          const token = jwt.sign(
-            { username: data.username, role: data.role },
-            secret
-          );
-          res.json({ token });
+          if (data.status === "inactive") {
+            res.json(
+              "Your account is inactive, please contact us at please@help.me"
+            );
+          } else if (data.status === "active") {
+            const token = jwt.sign(
+              { username: data.username, role: data.role },
+              secret
+            );
+            res.json({ token });
+          }
         } else {
           res.status(200).json({ error: "invalid username or password" });
         }

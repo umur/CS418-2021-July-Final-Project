@@ -5,13 +5,29 @@ const authConroller = require("../controller/authController");
 let getDB = require("../utils/database").getDB;
 
 router.get("/", (req, res, next) => {
-  let product1 = getDB().collection("product").find().toArray();
-  product1.then((data) => {
-    if (!data) {
-      console.log("no data");
+  if (!req.query.sort) {
+    let product1 = getDB().collection("product").find().toArray();
+    product1.then((data) => {
+      if (!data) {
+        console.log("no data");
+      }
+      res.json({ data });
+    });
+  } else {
+    if (req.query.sort === "reputation") {
+      getDB()
+        .collection("product")
+        .find()
+        .sort({ reputation: 1 })
+        .project({ _id: 0, review: 0 })
+        .toArray()
+        .then((sortedData) => {
+          res.json(sortedData);
+        });
+    } else {
+      res.json("no such search query");
     }
-    res.json({ data });
-  });
+  }
 });
 router.get("/:name", (req, res, next) => {
   let product1 = getDB()
