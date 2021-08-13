@@ -6,9 +6,10 @@ exports.getAllProducts = (req, res, next) => {
     .find()
     .toArray()
     .then((product) => res.json(product))
-    .catch((err) => next(err));
+    .catch((err) => console.log(err));
 };
 exports.getProduct = (req, res, next) => {
+  console.log(req.params);
   const product = { productId: Number(req.params.id) };
   const db = getDatabase();
   db.collection("products")
@@ -17,14 +18,14 @@ exports.getProduct = (req, res, next) => {
     .then((product) => res.json(product))
     .catch((err) => next(err));
 };
-let id = 1;
+let product_id = 1;
 exports.createProduct = (req, res, next) => {
   const newProduct = {
     productName: req.body.productName,
     price: req.body.price,
-    productId: id,
+    productId: product_id,
   };
-  id++;
+  product_id++;
 
   const db = getDatabase();
   db.collection("products")
@@ -44,32 +45,6 @@ exports.updateProduct = (req, res, next) => {
     .catch((err) => next(err));
 };
 
-exports.updateReview = (req, res, next) => {
-  const product = { productId: Number(req.params.id) };
-  const review = req.body.review;
-  const userName = req.body.userName;
-  let increment;
-  if (review == "bad") {
-    increment = -1;
-  } else if (review == "good") {
-    increment = 0;
-  } else if (review == "excellent") {
-    increment = 2;
-  }
-  const db = getDatabase();
-  db.collection("products")
-    .updateMany(product, {
-      $push: {
-        reputationinfo: { userName: userName, reputationPts: increment },
-      },
-      $inc: { totalReputationPts: increment },
-    })
-
-    .then(() => {
-      res.json({ status: "Product Updated" });
-    })
-    .catch((err) => next(err));
-};
 exports.deleteProduct = (req, res, next) => {
   const product = { productId: req.params.id };
   const db = getDatabase();
