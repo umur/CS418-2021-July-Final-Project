@@ -12,7 +12,8 @@ let reviewRouter = require("./routes/reviews");
 const productRouter = require("./routes/product");
 const logRouter = require("./routes/log");
 let mongoConnect = require("./utils/database").mongoConnect;
-//const db = require("./config/database")
+
+const db = require("./config/database");
 
 var app = express();
 
@@ -26,11 +27,28 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// const swaggerOptions = {
+//   swaggerDefinition: {
+//     info: {
+//       title: "Product API",
+//       description: "Check product and It's reviews",
+//       contact: {
+//         name: "mintesinot and amanuel",
+//       },
+//       servers: ["http://localhost:3000"],
+//     },
+//   },
+//   apis: ["app.js", "./routes/product.js"],
+// };
+
+// const swaggerDocs = swaggerJsDoc(swaggerOptions);
+
 app.use("/", authRouter);
 
 app.use("/", logRouter);
 
 app.use("/users", usersRouter);
+
 app.use("/products", productRouter);
 app.use("/reviews", reviewRouter);
 

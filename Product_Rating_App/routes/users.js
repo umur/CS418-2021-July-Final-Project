@@ -33,6 +33,7 @@ router.post("/", authConroller.authorizeAdmin, function (req, res, next) {
     username: req.body.username,
     password: req.body.password,
     role: req.body.role,
+    review: [],
   };
   getDB()
     .collection("users")
