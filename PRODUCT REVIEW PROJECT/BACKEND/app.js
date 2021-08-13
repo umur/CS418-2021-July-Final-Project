@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const MongoClient = require('mongodb').MongoClient;
+const fs = require('fs');
 
 var usersRouter = require('./routes/users');
 const productRouter=require('./routes/products');
@@ -31,6 +32,15 @@ app.use((req, res, next) => {
       console.log('Error: ', err);
     });
 });
+
+//log the request
+app.use('/', (req, res, next) => {
+  // if (req.method === 'GET') {
+    const logRequest = fs.createWriteStream('./requests.log', { flags: 'a' });
+    logRequest.write(req.method + ' ' + req.url + '\n');
+    logRequest.end();
+  next();
+})
 
 app.use('/', usersRouter);
 app.use('/product',productRouter);
