@@ -8,6 +8,7 @@ const fs = require('fs');
 
 var usersRouter = require('./routes/users');
 const productRouter=require('./routes/products');
+const reviewRouter=require('./routes/review');
 
 var app = express();
 
@@ -44,6 +45,7 @@ app.use('/', (req, res, next) => {
 
 app.use('/', usersRouter);
 app.use('/product',productRouter);
+app.use('/review',reviewRouter);
 
 
 app.get('/', (req, res) => {
