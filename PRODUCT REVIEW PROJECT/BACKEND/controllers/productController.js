@@ -1,4 +1,3 @@
-
 // const ObjectId=require('mongodb').ObjectId;
 
 exports.getAllProducts = (req, res, next) => {
@@ -10,9 +9,9 @@ exports.getAllProducts = (req, res, next) => {
 };
 
 exports.getProdBySku = (req, res, next) => {
-    const db=req.db.collection('products');
-    // db.createIndex({prodSku:1});
-    db.findOne({'prodSku':req.params.prodSku})
+    const collection=req.db.collection('products');
+    db.createIndex({prodSku:1});
+    collection.findOne({'prodSku':req.params.prodSku})
     .then(result => {
         res.json(result);
     })
@@ -36,9 +35,8 @@ exports.addProducts=(req,res,next)=>{
   };
 
 exports.updateProdBySku=(req, res, next) => {
-    const updatedProd=req.body;
-    const db=req.db.collection('products');
-    db.updateOne({"prodSku":req.params.prodSku},{$set:{updatedProd}})
+    const collection=req.db.collection('products');
+    collection.updateOne({"prodSku":req.params.prodSku},{$set:req.body})
     .then(data => {
         res.json({ message: 'Product is updated', data });
       })
@@ -57,7 +55,7 @@ exports.deleteProdBySku=(req, res, next) => {
 
 exports.addReview=(req,res,next)=>{
   
-    const db=req.db.collection('products');
+    const collection=req.db.collection('products');
     const reviews=[{
         username:req.body.username,
         prodSku:req.body.prodSku,
@@ -65,7 +63,7 @@ exports.addReview=(req,res,next)=>{
         date: new Date(),
         rating:req.body.rating
     }];
- 
+  
     let sum;
     for(let i=0;i<reviews.length;i++){
         if(reviews[i].rating=='good'){
@@ -76,7 +74,7 @@ exports.addReview=(req,res,next)=>{
             sum=sum-1;
         }
     }
-    db.updateOne({'prodSku':req.body.prodSku},{$push:{'reviews':reviews}},{$set:{'reputation':sum}})
+    collection.updateOne({'prodSku':req.body.prodSku},{$push:{'reviews':reviews}},{$set:{'reputation':sum}})
     .then(data => {
         res.json({ message: `Review is added for product ${req.body.prodSku}`, data });
       })
@@ -84,8 +82,3 @@ exports.addReview=(req,res,next)=>{
       );
     // db.createIndex({'reputation':1}); 
 };
-
-
-
-
-
