@@ -10,7 +10,7 @@ exports.getAllProducts = (req, res, next) => {
 
 exports.getProdBySku = (req, res, next) => {
     const collection=req.db.collection('products');
-    db.createIndex({prodSku:1});
+//     db.createIndex({prodSku:1});
     collection.findOne({'prodSku':req.params.prodSku})
     .then(result => {
         res.json(result);
