@@ -1,0 +1,12 @@
+
+POST /sign-up
+POST /sign-up
+POST /sign-in
+POST /sign-in
+POST /product
+POST /product
+PUT /product
+PUT /product/99999
+POST /sign-in
+PUT /product/99999
+
