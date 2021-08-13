@@ -4,6 +4,15 @@ const authConroller = require("../controller/authController");
 const getDB = require("../utils/database").getDB;
 const ObjectId = require("../utils/database").ObjectId;
 
+function ratingToReview(rating) {
+  if (rating === "excellent") {
+    return 2;
+  } else if (rating === "bad") {
+    return -1;
+  }
+  return 0;
+}
+
 function getProductByName(name) {
   return getDB()
     .collection("product")
@@ -67,7 +76,7 @@ router.post("/", (req, res, next) => {
               .insertOne(reviewToInsert)
               .then((data) => {
                 if (!data) {
-                  res.json("no data");
+                  res.json("error inserting");
                 } else {
                   getDB()
                     .collection("users")
@@ -81,8 +90,7 @@ router.post("/", (req, res, next) => {
                             review_id: data.insertedId,
                           },
                         },
-                      },
-                      { upsert: true }
+                      }
                     );
 
                   getDB()
@@ -100,14 +108,8 @@ router.post("/", (req, res, next) => {
                         },
                       }
                     );
-                  let addToReputaion;
-                  if ((req.body.rating = "excellent")) {
-                    addToReputation = 2;
-                  } else if ((req.body.rating = "bad")) {
-                    addToReputation = -1;
-                  } else {
-                    addToReputation = 0;
-                  }
+
+                  let addToReputation = ratingToReview(req.body.rating);
 
                   getDB()
                     .collection("product")
@@ -131,8 +133,9 @@ router.post("/", (req, res, next) => {
 
 router.put("/:id", authConroller.authorizeAdmin, (req, res, next) => {
   getReviewByID(req.params.id).then((found) => {
-    console.log(found);
     if (found) {
+      let reviewRatingValue = ratingToReview(found.product.rating);
+
       getDB()
         .collection("review")
         .updateOne(
@@ -144,15 +147,27 @@ router.put("/:id", authConroller.authorizeAdmin, (req, res, next) => {
           }
         )
         .then((updated) => {
-          getDB()
-            .collection("product")
-            .updateOne(
-              {
-                name: req.body.product_name,
-                "review.review_id": new ObjectId(req.params.id),
-              },
-              { $set: { "review.$.rating": req.body.rating } }
-            );
+          getProductByName(req.body.product_name).then((productData) => {
+            let updateReputation = ratingToReview(req.body.rating);
+
+            let newReputation =
+              productData.reputation - reviewRatingValue + updateReputation;
+
+            getDB()
+              .collection("product")
+              .updateOne(
+                {
+                  name: req.body.product_name,
+                  "review.review_id": new ObjectId(req.params.id),
+                },
+                {
+                  $set: {
+                    "review.$.rating": req.body.rating,
+                    reputation: newReputation,
+                  },
+                }
+              );
+          });
 
           getDB()
             .collection("users")
