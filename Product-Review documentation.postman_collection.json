@@ -1,0 +1,1898 @@
+{
+	"info": {
+		"_postman_id": "f5275eed-8158-4265-ad85-51cba11d7d1c",
+		"name": "Product-Review documentation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login request Regular/user - active account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"robbie\", \"password\" : \"321654\", \"role\" : \"regular\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				},
+				"description": "API endpoint to *POST* to the system user credentials and to login \n>a successful request will result in a HTTP 200 status code which gives back token to access other APIs -wrong credential returns invalid username or password"
+			},
+			"response": [
+				{
+					"name": "Login request regular",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"robbie\", \"password\" : \"321654\", \"role\" : \"regular\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "167"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a7-Z91MPhIBfVrEYoKW7SLFuixn/ec\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Aug 2021 21:31:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvYmJpZSIsInJvbGUiOiJyZWd1bGFyIiwiaWF0IjoxNjI4ODAzOTE4fQ.S5AcHIYGLfn-L6i_CN-iPRvV43wQKodsyFeejtt97KM\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login request Admin/Superuser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"mintes4\", \"password\" : \"123456\", \"role\" : \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				},
+				"description": "API endpoint to *POST* to the system user credentials and to login \n>a successful request will result in a HTTP 200 status code which gives back token to access other APIs -wrong credential returns invalid username or password"
+			},
+			"response": [
+				{
+					"name": "Login request Admin/Superuser",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"mintes4\", \"password\" : \"123456\", \"role\" : \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "165"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a5-vFBal/bsby1zI3UyMx3f6Jyt6uY\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Aug 2021 21:44:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login request Regular/user - inactive account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"testman\", \"password\" : \"321654\", \"role\" : \"regular\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login request Regular/user - inactive account",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"testman\", \"password\" : \"321654\", \"role\" : \"regular\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "63"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3f-k9B/QfpTsFxcCczYLpHvEIA295o\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 13 Aug 2021 21:31:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "\"Your account is inactive, please contact us at please@help.me\""
+				}
+			]
+		},
+		{
+			"name": "Get All users - Admin",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/users",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				},
+				"description": "API endpoint for Admin to *Get* all users in the system.\n\n>a successful request will result in a HTTP 200 status code"
+			},
+			"response": [
+				{
+					"name": "Get All users - Admin",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "736"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2e0-SIxGmOlzWdF2iOGwOL0+g1RX+Zc\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Aug 2021 21:48:01 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"60e8e75248170a0a485d4b18\",\n        \"username\": \"mintes4\",\n        \"password\": \"123456\",\n        \"role\": \"admin\",\n        \"review\": [\n            {\n                \"productName\": \"acer\",\n                \"rating\": \"bad\",\n                \"review_id\": \"61129f49487317fce811c63f\"\n            }\n        ],\n        \"firstname\": \"Mintesinot\",\n        \"lastname\": \"Gebre\"\n    },\n    {\n        \"_id\": \"610ec1092ab73efb8c27db57\",\n        \"username\": \"jossy\",\n        \"password\": \"456789\",\n        \"role\": \"admin\",\n        \"review\": [\n            {\n                \"productName\": \"hp\",\n                \"rating\": \"excellent\",\n                \"review_id\": \"61129f75487317fce811c640\"\n            }\n        ],\n        \"firstname\": \"Eyosias\",\n        \"lastname\": \"Tekle\"\n    },\n    {\n        \"_id\": \"610ec510a7441f954b37fa73\",\n        \"username\": \"robbie\",\n        \"password\": \"321654\",\n        \"role\": \"regular\",\n        \"review\": [],\n        \"firstname\": \"Rehoboth\",\n        \"lastname\": \"Benti\"\n    },\n    {\n        \"_id\": \"610fdb465de2793d4c573846\",\n        \"username\": \"testGuy\",\n        \"password\": \"123456789\",\n        \"role\": \"regular\",\n        \"review\": [],\n        \"firstname\": \"Test\",\n        \"lastname\": \"Guy\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get user by username - Admin",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/users/testGuy",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"testGuy"
+					]
+				},
+				"description": "API endpoint for Admins to *GET* a user in the system with a username parameter\n\n>a successful request will result in a HTTP 200 status code"
+			},
+			"response": [
+				{
+					"name": "Get user by username - Admin",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/users/testGuy",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"testGuy"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "143"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"8f-BNCsM1veVMY3mfvRv/lEYYAnF4I\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Aug 2021 22:07:31 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"610fdb465de2793d4c573846\",\n    \"username\": \"testGuy\",\n    \"password\": \"123456789\",\n    \"role\": \"regular\",\n    \"review\": [],\n    \"firstname\": \"Test\",\n    \"lastname\": \"Guy\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Register user - Admin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"testgirl\", \"password\" : \"321654\", \"role\" : \"regular\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				},
+				"description": "API endpoint for Admins to *Register* a user in the system with body of registration information\n\n>a successful request will result in a HTTP 200 status code"
+			},
+			"response": [
+				{
+					"name": "Register User - Admin",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"testgirl\", \"password\" : \"321654\", \"role\" : \"regular\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3d-Cxh6hLrsjM5gRM2zXFWlcMNZ0Uw\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Aug 2021 21:54:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"acknowledged\": true,\n    \"insertedId\": \"6115989e91c25743f63494d2\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update user - Admin",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"testman\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users/testgirl",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"testgirl"
+					]
+				},
+				"description": "API endpoint for Admins to *Update* a user in the system with a username parameter and a body to update with\n\n>a successful request will result in a HTTP 200 status code"
+			},
+			"response": [
+				{
+					"name": "Update user - Admin",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"testman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users/testgirl",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"testgirl"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "92"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5c-XE4LqSKK8lMBgnDPfq7vp2yCSG8\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Aug 2021 22:00:02 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"acknowledged\": true,\n    \"modifiedCount\": 1,\n    \"upsertedId\": null,\n    \"upsertedCount\": 0,\n    \"matchedCount\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete user - Admin",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users/testgirl",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"testgirl"
+					]
+				},
+				"description": "API endpoint for Admins to *Delete* a user in the system with a username parameter\n\n>a successful request will result in a HTTP 200 status code"
+			},
+			"response": [
+				{
+					"name": "Delete user - Admin",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users/testgirl",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"testgirl"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "38"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"26-fgR5yLHQ1Hpp6zDESHaY9wJreYE\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Aug 2021 22:03:49 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"acknowledged\": true,\n    \"deletedCount\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All products",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/products",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products"
+					]
+				},
+				"description": "API endpoint to *Get* all products in the system.\n\n>a successful request will result in a HTTP 200 status code"
+			},
+			"response": [
+				{
+					"name": "Get All products",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/products",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "700"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2bc-y7VReWdgqtBtxl8Luj1aQkJW0QI\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Aug 2021 22:23:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"_id\": \"60e8920fe0c11b19a09afbd7\",\n            \"category\": \"Computer and Electronics\",\n            \"description\": \"very nice product\",\n            \"name\": \"acer\",\n            \"price\": \"3000\",\n            \"reputation\": 2,\n            \"review\": [\n                {\n                    \"review_id\": \"61129f49487317fce811c63f\",\n                    \"firstname\": \"Mintesinot\",\n                    \"lastname\": \"Gebre\",\n                    \"rating\": \"bad\"\n                }\n            ]\n        },\n        {\n            \"_id\": \"60e898370bb9985a10cfd529\",\n            \"price\": \"2800\",\n            \"description\": \"you can write on it\",\n            \"name\": \"Dell\",\n            \"category\": \"Computer and Electronics\",\n            \"reputation\": 0,\n            \"review\": []\n        },\n        {\n            \"_id\": \"61128ee44a64ecb241ac34b5\",\n            \"category\": \"Computer and Electronics\",\n            \"description\": \"very nice product\",\n            \"name\": \"hp\",\n            \"price\": \"2500\",\n            \"reputation\": 8,\n            \"review\": [\n                {\n                    \"review_id\": \"61129f75487317fce811c640\",\n                    \"firstname\": \"Eyosias\",\n                    \"lastname\": \"Tekle\",\n                    \"rating\": \"excellent\"\n                }\n            ]\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All products sorted by reputation",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/products?sort=reputation",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "reputation"
+						}
+					]
+				},
+				"description": "API endpoint to *Get* all products in the system sorted by their reputation.\n\n>a successful request will result in a HTTP 200 status code"
+			},
+			"response": [
+				{
+					"name": "Get All products sorted by reputation",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/products?sort=reputation",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "reputation"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "462"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1ce-SKMJmEPDfbEWQDyN/Bimgr8A2/g\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 13 Aug 2021 20:59:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"price\": \"2800\",\n        \"description\": \"you can write on it\",\n        \"name\": \"Dell\",\n        \"category\": \"Computer and Electronics\",\n        \"reputation\": 0\n    },\n    {\n        \"category\": \"Computer and Electronics\",\n        \"description\": \"very nice product\",\n        \"name\": \"acer\",\n        \"price\": \"3000\",\n        \"reputation\": 2\n    },\n    {\n        \"name\": \"bottle\",\n        \"description\": \"container used to carry cold drinks\",\n        \"category\": \"kitchen\",\n        \"reputation\": 6\n    },\n    {\n        \"category\": \"Computer and Electronics\",\n        \"description\": \"very nice product\",\n        \"name\": \"hp\",\n        \"price\": \"2500\",\n        \"reputation\": 12\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get Product by name",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/products/hp",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"hp"
+					]
+				},
+				"description": "API endpoint to *GET* a product in the system with a name parameter\n\n>a successful request will result in a HTTP 200 status code"
+			},
+			"response": [
+				{
+					"name": "Get Product by name",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/products/hp",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"hp"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "271"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"10f-cdlm6DoDCVmwKjo7+qdsLdTKeMo\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Aug 2021 22:33:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"_id\": \"61128ee44a64ecb241ac34b5\",\n        \"category\": \"Computer and Electronics\",\n        \"description\": \"very nice product\",\n        \"name\": \"hp\",\n        \"price\": \"2500\",\n        \"reputation\": 8,\n        \"review\": [\n            {\n                \"review_id\": \"61129f75487317fce811c640\",\n                \"firstname\": \"Eyosias\",\n                \"lastname\": \"Tekle\",\n                \"rating\": \"excellent\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Register Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"bottle\", \"description\" : \"container used to carry cold drinks\", \"category\" : \"kitchen\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/products",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products"
+					]
+				},
+				"description": "API endpoint for users to *Register* a product in the system with body of registration information\n\n>a successful request will result in a HTTP 200 status code"
+			},
+			"response": [
+				{
+					"name": "Register Product",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"bottle\", \"description\" : \"container used to carry cold drinks\", \"category\" : \"kitchen\", \"price\":20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/products",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "70"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"46-rSzNKtoykfq+SXHpRSbmTU/Yqbo\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Aug 2021 22:51:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"acknowledged\": true,\n        \"insertedId\": \"6115a5e80a5a1f474cec1d09\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Product by name",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"price\" : \"12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/products/bottle",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"bottle"
+					]
+				},
+				"description": "API endpoint for Admins to *Update* a product in the system with a name parameter and a body to update with\n\n>a successful request will result in a HTTP 200 status code"
+			},
+			"response": [
+				{
+					"name": "Update Product by name",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\" : \"12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/products/bottle",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"bottle"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "92"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5c-XE4LqSKK8lMBgnDPfq7vp2yCSG8\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Aug 2021 22:55:45 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"acknowledged\": true,\n    \"modifiedCount\": 1,\n    \"upsertedId\": null,\n    \"upsertedCount\": 0,\n    \"matchedCount\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Product  by name",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/products/bottle",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"bottle"
+					]
+				},
+				"description": "API endpoint for Admins to *Delete* a product in the system with a name parameter\n\n>a successful request will result in a HTTP 200 status code"
+			},
+			"response": [
+				{
+					"name": "Delete Product  by name",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/products/bottle",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"bottle"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "47"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2f-kOSYjgW+9sZXhiL3MI4+uZuCOEE\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Aug 2021 23:00:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"acknowledged\": true,\n        \"deletedCount\": 1\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Reviews",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/reviews",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"reviews"
+					]
+				},
+				"description": "API endpoint to *Get* all product reviews in the system.\n\n>a successful request will result in a HTTP 200 status code"
+			},
+			"response": [
+				{
+					"name": "Get All reviews",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/reviews",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"reviews"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "312"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"138-CXGgZenU362orjD9XQdjHz/pmgo\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 13 Aug 2021 10:57:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"61129f49487317fce811c63f\",\n        \"user\": {\n            \"firstname\": \"Mintesinot\",\n            \"lastname\": \"Gebre\"\n        },\n        \"product\": {\n            \"name\": \"acer\",\n            \"rating\": \"bad\"\n        },\n        \"createdAt\": 1628610377858\n    },\n    {\n        \"_id\": \"61129f75487317fce811c640\",\n        \"user\": {\n            \"firstname\": \"Eyosias\",\n            \"lastname\": \"Tekle\"\n        },\n        \"product\": {\n            \"name\": \"hp\",\n            \"rating\": \"excellent\"\n        },\n        \"createdAt\": 1628610421714\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get Review by product name",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/products/hp",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"hp"
+					]
+				},
+				"description": "API endpoint to *GET* a product review in the system with a name parameter\n\n>a successful request will result in a HTTP 200 status code"
+			},
+			"response": [
+				{
+					"name": "Get Product review by prodName",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/reviews/hp",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"reviews",
+								"hp"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "104"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"68-Djnrk5QNVMisXJVvlGytKdxs7Yk\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 13 Aug 2021 11:01:01 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"review_id\": \"61129f75487317fce811c640\",\n        \"firstname\": \"Eyosias\",\n        \"lastname\": \"Tekle\",\n        \"rating\": \"excellent\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Register Product review",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"bottle\", \"description\" : \"container used to carry cold drinks\", \"category\" : \"kitchen\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/reviews",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"reviews"
+					]
+				},
+				"description": "API endpoint for users to *Register* a product review in the system with body of registration information\n\n>a successful request will result in a HTTP 200 status code"
+			},
+			"response": [
+				{
+					"name": "Register Product review",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product_name\": \"hp\",\r\n    \"rating\": \"good\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/reviews",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"reviews"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3d-gdXnxvTUN2r4G5BOxTA13tPhPHM\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 13 Aug 2021 11:07:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"acknowledged\": true,\n    \"insertedId\": \"6116525de7dfa4c440102f3f\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Product review by review ID - Admin",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"product_name\": \"bottle\",\r\n    \"rating\": \"excellent\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/reviews/6116cb43e35d87d595b3763f",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"reviews",
+						"6116cb43e35d87d595b3763f"
+					]
+				},
+				"description": "API endpoint for Admins to *Update* a product review in the system with a ID parameter and a body to update with\n\n>a successful request will result in a HTTP 200 status code"
+			},
+			"response": [
+				{
+					"name": "Update Product review by review id",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product_name\": \"hp\",\r\n    \"rating\": \"bad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/reviews/6116525de7dfa4c440102f3f",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"reviews",
+								"6116525de7dfa4c440102f3f"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "92"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5c-XE4LqSKK8lMBgnDPfq7vp2yCSG8\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 13 Aug 2021 11:13:11 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"acknowledged\": true,\n    \"modifiedCount\": 1,\n    \"upsertedId\": null,\n    \"upsertedCount\": 0,\n    \"matchedCount\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Product review by ID - admin",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/reviews/6116525de7dfa4c440102f3f",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"reviews",
+						"6116525de7dfa4c440102f3f"
+					]
+				},
+				"description": "API endpoint for Admins to *Delete* a product review in the system with a name parameter\n\n>a successful request will result in a HTTP 200 status code"
+			},
+			"response": [
+				{
+					"name": "Delete Product review by ID - admin",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/reviews/6116525de7dfa4c440102f3f",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"reviews",
+								"6116525de7dfa4c440102f3f"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "38"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"26-fgR5yLHQ1Hpp6zDESHaY9wJreYE\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 13 Aug 2021 11:24:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"acknowledged\": true,\n    \"deletedCount\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All requests log - Admin",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/log",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"log"
+					]
+				},
+				"description": "API endpoint to *Get* all requests log in the system.\n\n>a successful request will result in a HTTP 200 status code"
+			},
+			"response": [
+				{
+					"name": "Get All requests - Admin",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbnRlczQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Mjg4MDQ2ODJ9.VzR4NcLfQuQPnk3r2agTHIEpuDmV0whfhU3y_vUQEhU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/log",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"log"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "6974"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1b3e-f7ZCgIIC47Vcyq2ojG+FAD3d+XM\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 13 Aug 2021 11:33:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"6113e1963a22db3f7a775622\",\n        \"user\": [\n            \"jossy\",\n            null\n        ],\n        \"url\": \"/users\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628692886781\n    },\n    {\n        \"_id\": \"6113e19a3a22db3f7a775623\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/log\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628692890978\n    },\n    {\n        \"_id\": \"6113e1ad3a22db3f7a775624\",\n        \"user\": [\n            \"jossy\",\n            null\n        ],\n        \"url\": \"/reviews\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628692909425\n    },\n    {\n        \"_id\": \"6113e1b93a22db3f7a775625\",\n        \"user\": [\n            \"jossy\",\n            null\n        ],\n        \"url\": \"/reviews/hp\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628692921246\n    },\n    {\n        \"_id\": \"6113e1c53a22db3f7a775626\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/log\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628692933401\n    },\n    {\n        \"_id\": \"6113e7543a22db3f7a775627\",\n        \"user\": [\n            \"robbie\",\n            \"regular\"\n        ],\n        \"url\": \"/review\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628694356647\n    },\n    {\n        \"_id\": \"6113e75a3a22db3f7a775628\",\n        \"user\": [\n            \"robbie\",\n            \"regular\"\n        ],\n        \"url\": \"/reviews\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628694362340\n    },\n    {\n        \"_id\": \"6113e7653a22db3f7a775629\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/log\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628694373221\n    },\n    {\n        \"_id\": \"6113e9145377a347b4d84532\",\n        \"user\": [\n            \"jossy\",\n            \"admin\"\n        ],\n        \"url\": \"/reviews\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628694804249\n    },\n    {\n        \"_id\": \"6113e91c5377a347b4d84533\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/log\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628694812601\n    },\n    {\n        \"_id\": \"6113e98c5377a347b4d84534\",\n        \"user\": [\n            \"robbie\",\n            \"regular\"\n        ],\n        \"url\": \"/users\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628694924962\n    },\n    {\n        \"_id\": \"6113e9985377a347b4d84535\",\n        \"user\": [\n            \"jossy\",\n            \"admin\"\n        ],\n        \"url\": \"/users\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628694936060\n    },\n    {\n        \"_id\": \"6113e9eb5377a347b4d84536\",\n        \"user\": [\n            \"jossy\",\n            \"admin\"\n        ],\n        \"url\": \"/users/mintes4\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628695019123\n    },\n    {\n        \"_id\": \"6113ebb208e8370a0767b6e7\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/log\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628695474506\n    },\n    {\n        \"_id\": \"6113ebd308e8370a0767b6e8\",\n        \"user\": [\n            \"jossy\",\n            \"admin\"\n        ],\n        \"url\": \"/log/6113e7543a22db3f7a775627\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628695507818\n    },\n    {\n        \"_id\": \"6113ebf508e8370a0767b6e9\",\n        \"user\": [\n            \"jossy\",\n            \"admin\"\n        ],\n        \"url\": \"/log\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628695541807\n    },\n    {\n        \"_id\": \"6113f00cfbf9560f67faa929\",\n        \"user\": [\n            \"jossy\",\n            \"admin\"\n        ],\n        \"url\": \"/log/6113ebf508e8370a0767b6e9\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628696588093\n    },\n    {\n        \"_id\": \"6113f025f5e29e87e36d7e1a\",\n        \"user\": [\n            \"jossy\",\n            \"admin\"\n        ],\n        \"url\": \"/log/6113ebf508e8370a0767b6e9\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628696613091\n    },\n    {\n        \"_id\": \"6113f06252b5608b117ec399\",\n        \"user\": [\n            \"jossy\",\n            \"admin\"\n        ],\n        \"url\": \"/log/6113ebf508e8370a0767b6e9\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628696674596\n    },\n    {\n        \"_id\": \"6113f2c952b5608b117ec39a\",\n        \"user\": [\n            \"jossy\",\n            \"admin\"\n        ],\n        \"url\": \"/log/\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628697289400\n    },\n    {\n        \"_id\": \"6113f4cf7b5441c6e1ae14b5\",\n        \"user\": [\n            \"jossy\",\n            \"admin\"\n        ],\n        \"url\": \"/log?id=6113e1963a22db3f7a775622\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628697807814\n    },\n    {\n        \"_id\": \"6113f4e0453474f24332f56a\",\n        \"user\": [\n            \"jossy\",\n            \"admin\"\n        ],\n        \"url\": \"/log?id=6113e1963a22db3f7a775622\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628697824671\n    },\n    {\n        \"_id\": \"6113f51328c4b8aae1968bcf\",\n        \"user\": [\n            \"jossy\",\n            \"admin\"\n        ],\n        \"url\": \"/log?id=6113e1963a22db3f7a775622\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628697875115\n    },\n    {\n        \"_id\": \"6113f51a28c4b8aae1968bd0\",\n        \"user\": [\n            \"jossy\",\n            \"admin\"\n        ],\n        \"url\": \"/log\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628697882318\n    },\n    {\n        \"_id\": \"6113f51e28c4b8aae1968bd1\",\n        \"user\": [\n            \"jossy\",\n            \"admin\"\n        ],\n        \"url\": \"/log?id=6113e1963a22db3f7a775622\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628697886384\n    },\n    {\n        \"_id\": \"6113f54c364cb1bdb086a262\",\n        \"user\": [\n            \"jossy\",\n            \"admin\"\n        ],\n        \"url\": \"/log?id=6113e1963a22db3f7a775622\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628697932391\n    },\n    {\n        \"_id\": \"6113f560d5aa7a689407ad19\",\n        \"user\": [\n            \"jossy\",\n            \"admin\"\n        ],\n        \"url\": \"/log?id=6113e1963a22db3f7a775622\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628697952143\n    },\n    {\n        \"_id\": \"6113f57aea6d4790074ff636\",\n        \"user\": [\n            \"jossy\",\n            \"admin\"\n        ],\n        \"url\": \"/log?id=6113e1963a22db3f7a775622\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628697978846\n    },\n    {\n        \"_id\": \"6113f59c8b4207342f4be070\",\n        \"user\": [\n            \"jossy\",\n            \"admin\"\n        ],\n        \"url\": \"/log/6113e1963a22db3f7a775622\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628698012825\n    },\n    {\n        \"_id\": \"6113f5c65cf1ea69c5a53911\",\n        \"user\": [\n            \"jossy\",\n            \"admin\"\n        ],\n        \"url\": \"/log/?id=6113e1963a22db3f7a775622\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628698054888\n    },\n    {\n        \"_id\": \"61159711958b97b1053373b1\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/users\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628804881040\n    },\n    {\n        \"_id\": \"6115989e91c25743f63494d1\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/users\",\n        \"method\": \"POST\",\n        \"createdAt\": 1628805278018\n    },\n    {\n        \"_id\": \"611599e291c25743f63494d3\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/users/testgirl\",\n        \"method\": \"PUT\",\n        \"createdAt\": 1628805602673\n    },\n    {\n        \"_id\": \"61159a4a91c25743f63494d4\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/users\",\n        \"method\": \"POST\",\n        \"createdAt\": 1628805706050\n    },\n    {\n        \"_id\": \"61159ac591c25743f63494d6\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/users/testgirl\",\n        \"method\": \"DELETE\",\n        \"createdAt\": 1628805829603\n    },\n    {\n        \"_id\": \"61159b9891c25743f63494d7\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/users/testguy\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628806040815\n    },\n    {\n        \"_id\": \"61159ba391c25743f63494d8\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/users/testGuy\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628806051864\n    },\n    {\n        \"_id\": \"61159f6291c25743f63494d9\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/products\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628807010746\n    },\n    {\n        \"_id\": \"6115a06e7019a4af33f5af01\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/products/acer\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628807278194\n    },\n    {\n        \"_id\": \"6115a0b27019a4af33f5af02\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/products/hp\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628807346274\n    },\n    {\n        \"_id\": \"6115a122afe93729d2a83de3\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/products/hp\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628807458400\n    },\n    {\n        \"_id\": \"6115a1afb5b52431f1cafa60\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/products/hp\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628807599459\n    },\n    {\n        \"_id\": \"6115a3fa0a5a1f474cec1d06\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/products\",\n        \"method\": \"POST\",\n        \"createdAt\": 1628808186743\n    },\n    {\n        \"_id\": \"6115a5e80a5a1f474cec1d08\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/products\",\n        \"method\": \"POST\",\n        \"createdAt\": 1628808680161\n    },\n    {\n        \"_id\": \"6115a64d0a5a1f474cec1d0a\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/products/bottle\",\n        \"method\": \"PUT\",\n        \"createdAt\": 1628808781803\n    },\n    {\n        \"_id\": \"6115a6f1213bd621442adf9b\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/products/bottle\",\n        \"method\": \"PUT\",\n        \"createdAt\": 1628808945533\n    },\n    {\n        \"_id\": \"6115a816e7dfa4c440102f39\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/products/bottle\",\n        \"method\": \"DELETE\",\n        \"createdAt\": 1628809238713\n    },\n    {\n        \"_id\": \"61165032e7dfa4c440102f3a\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/reviews\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628852274978\n    },\n    {\n        \"_id\": \"611650b7e7dfa4c440102f3b\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/review/61129f49487317fce811c63f\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628852407551\n    },\n    {\n        \"_id\": \"611650e7e7dfa4c440102f3c\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/review/hp\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628852455331\n    },\n    {\n        \"_id\": \"611650ede7dfa4c440102f3d\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/reviews/hp\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628852461463\n    },\n    {\n        \"_id\": \"6116525de7dfa4c440102f3e\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/reviews\",\n        \"method\": \"POST\",\n        \"createdAt\": 1628852829220\n    },\n    {\n        \"_id\": \"611653c7e7dfa4c440102f40\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/reviews/6116525de7dfa4c440102f3f\",\n        \"method\": \"PUT\",\n        \"createdAt\": 1628853191196\n    },\n    {\n        \"_id\": \"61165650e7dfa4c440102f41\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/reviews/6116525de7dfa4c440102f3f\",\n        \"method\": \"DELETE\",\n        \"createdAt\": 1628853840361\n    },\n    {\n        \"_id\": \"61165892e7dfa4c440102f42\",\n        \"user\": [\n            \"mintes4\",\n            \"admin\"\n        ],\n        \"url\": \"/log\",\n        \"method\": \"GET\",\n        \"createdAt\": 1628854418447\n    }\n]"
+				}
+			]
+		}
+	]
+}
