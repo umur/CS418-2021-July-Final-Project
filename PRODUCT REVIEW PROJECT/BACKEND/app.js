@@ -36,7 +36,6 @@ app.use((req, res, next) => {
 
 //log the request
 app.use('/', (req, res, next) => {
-  // if (req.method === 'GET') {
     const logRequest = fs.createWriteStream('./requests.log', { flags: 'a' });
     logRequest.write(req.method + ' ' + req.url + '\n');
     logRequest.end();
