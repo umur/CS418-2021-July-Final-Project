@@ -24,7 +24,6 @@ exports.getAllReviews = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 exports.getReview = (req, res, next) => {
-  // const product = { productId: Number(req.params.id) };
   const reviewId = { reviewId: Number(req.params.rid) };
   console.log(reviewId);
   const db = getDatabase();
