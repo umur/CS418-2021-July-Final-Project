@@ -32,21 +32,12 @@ const requestLog = expressWinston.logger({
         useUnifiedTopology: true,
         useNewUrlParser: true,
         poolSize: 2,
-        // collection: "logs",
-        // autoReconnect: true,
       },
     }),
   ],
   meta: true,
   msg: "Request: HTTP {{req.method}} {{req.url}}",
-  requestWhitelist: [
-    "url",
-    "method",
-    // "httpVersion",
-    "originalUrl",
-    "query",
-    "body",
-  ],
+  requestWhitelist: ["url", "method", "originalUrl", "query", "body"],
 });
 
 exports.requestLog = requestLog;
