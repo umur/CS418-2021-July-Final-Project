@@ -14,8 +14,6 @@ router.put('/:prodSku',userController.authorizedSuperUser, productController.upd
 
 router.delete('/:prodSku', userController.authorizedSuperUser, productController.deleteProdBySku)
 
-router.post('/review',productController.addReview);
-
 
 module.exports=router;
 
