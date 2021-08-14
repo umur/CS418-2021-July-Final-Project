@@ -1,4 +1,3 @@
-// const ObjectId=require('mongodb').ObjectId;
 
 exports.getAllProducts = (req, res, next) => {
     req.db.collection('products').find().toArray()
@@ -10,9 +9,12 @@ exports.getAllProducts = (req, res, next) => {
 
 exports.getProdBySku = (req, res, next) => {
     const collection=req.db.collection('products');
-//     db.createIndex({prodSku:1});
+    // db.createIndex({'prodSku':1});
     collection.findOne({'prodSku':req.params.prodSku})
     .then(result => {
+        if(!result){
+            res.json({message:'There is no such product'})
+        }
         res.json(result);
     })
     .catch(err => console.log(err));
@@ -38,7 +40,7 @@ exports.updateProdBySku=(req, res, next) => {
     const collection=req.db.collection('products');
     collection.updateOne({"prodSku":req.params.prodSku},{$set:req.body})
     .then(data => {
-        res.json({ message: 'Product is updated', data });
+        res.json(data);
       })
       .catch(err => console.log(err)
       );
@@ -47,38 +49,11 @@ exports.updateProdBySku=(req, res, next) => {
 exports.deleteProdBySku=(req, res, next) => {
     req.db.collection('products').deleteOne({'prodSku':req.params.prodSku})
     .then(data => {
-        res.json({ message: 'Product is deleted', data });
+        res.json(data);
       })
       .catch(err => console.log(err)
       );
 };
 
-exports.addReview=(req,res,next)=>{
-  
-    const collection=req.db.collection('products');
-    const reviews=[{
-        username:req.body.username,
-        prodSku:req.body.prodSku,
-        review:req.body.review,
-        date: new Date(),
-        rating:req.body.rating
-    }];
-  
-    let sum;
-    for(let i=0;i<reviews.length;i++){
-        if(reviews[i].rating=='good'){
-            sum=0;
-        }else if(reviews[i].rating=='excellent'){
-            sum=sum+2;
-        }else{
-            sum=sum-1;
-        }
-    }
-    collection.updateOne({'prodSku':req.body.prodSku},{$push:{'reviews':reviews}},{$set:{'reputation':sum}})
-    .then(data => {
-        res.json({ message: `Review is added for product ${req.body.prodSku}`, data });
-      })
-      .catch(err => console.log(err)
-      );
-    // db.createIndex({'reputation':1}); 
-};
+
+
