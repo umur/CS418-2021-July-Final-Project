@@ -1,5 +1,4 @@
 const User = require('../models/userModel');
-
 const jwt = require("jsonwebtoken");
 const secret = "review-scret";
 
@@ -39,6 +38,41 @@ exports.signIn = (req, res, next) => {
         });
 }
 
+exports.getUser=(req,res,next)=>{
+  req.db.collection('users').findOne({'username':req.params.username})
+  .then(result => {
+      res.json(result);
+  })
+  .catch(err => console.log(err));
+}
+
+exports.getAllUser=(req,res,next)=>{
+  req.db.collection('users').find().toArray()
+  .then(result => {
+      res.json(result);
+  })
+  .catch(err => console.log(err));
+}
+
+exports.resetPass=(req,res,next)=>{
+  const collection=req.db.collection('users');
+    collection.updateOne({"username":req.params.username},{$set:{'password':req.body.password}})
+    .then(data => {
+        res.json(data);
+      })
+      .catch(err => console.log(err)
+      );
+}
+
+exports.deleteUser=(req,res,next)=>{
+  req.db.collection('users').deleteOne({'username':req.params.username})
+    .then(data => {
+        res.json(data);
+      })
+      .catch(err => console.log(err)
+      );
+}
+
 exports.authorize=(req, res, next) => {
     const authHeader = req.headers.authorization;
     if (authHeader) {
@@ -56,17 +90,11 @@ exports.authorize=(req, res, next) => {
   }
 
 exports.authorizedSuperUser=(req,res,next)=>{
-  if(req.user.role==='superUser'){
+  if(req.user.role=='superUser'){
     next();
   } else {
     res.status(401).json({ error: "unauthorized" });
   }
 }
 
-exports.listAllUserAccounts=(req,res,next)=>{
-    req.db.collection('users').find().toArray()
-    .then(result => {
-        res.json(result);
-    })
-    .catch(err => console.log(err));
-}
+
