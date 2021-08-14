@@ -7,18 +7,13 @@ router.post('/sign-up',userController.signUp);
 
 router.post('/sign-in', userController.signIn);
 
-router.get('/listUsers,',userController.authorizedSuperUser,userController.listAllUserAccounts);
-
-//activates user
-
-//deactivates user
-
-//reset users'password
-
-
 router.use('/',userController.authorize);
 
+router.get('/:username',userController.authorizedSuperUser,userController.getUser);
 
+router.put('/resetpass/:username',userController.authorizedSuperUser,userController.resetPass);
+
+router.delete('/:username',userController.authorizedSuperUser,userController.deleteUser);
 
 
 
